@@ -87,3 +87,28 @@ class BookSchemaList(BaseModel):
 class Language(str, Enum):
     en = "en-US"
     zh = "zh-CN"
+
+
+class StudentQuerySearchSchema(BaseModel):
+    q: Optional[str] = str()
+
+
+class StudentInSchema(BaseModel):
+    name: str
+    parent: str
+    phone: str
+    address: str
+
+
+class StudentOutSchema(BaseModel):
+    id: int
+    name: str
+    parent: str
+    phone: str
+    address: str
+
+
+class StudentSchemaList(BaseModel):
+    __root__: List[StudentOutSchema]
+
+

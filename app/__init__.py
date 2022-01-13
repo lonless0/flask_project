@@ -10,8 +10,10 @@ from flask import Flask
 def register_blueprints(app):
     from app.api.cms import create_cms
     from app.api.v1 import create_v1
+    from app.api.v2 import create_v2
 
     app.register_blueprint(create_v1(), url_prefix="/v1")
+    app.register_blueprint(create_v2(), url_prefix="/v2")
     app.register_blueprint(create_cms(), url_prefix="/cms")
 
 

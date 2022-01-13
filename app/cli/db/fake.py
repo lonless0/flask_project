@@ -6,6 +6,7 @@
 from lin.db import db
 
 from app.model.v1.book import Book
+from app.model.v2.student import Student
 
 
 def fake():

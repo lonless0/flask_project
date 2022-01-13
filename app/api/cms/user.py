@@ -52,12 +52,12 @@ def register():
 def login():
     form = LoginForm().validate_for_api()
     # 校对验证码
-    if current_app.config.get("LOGIN_CAPTCHA"):
-        tag = request.headers.get("tag")
-        secret_key = current_app.config.get("SECRET_KEY")
-        serializer = JWSSerializer(secret_key)
-        if form.captcha.data != serializer.loads(tag):
-            raise Failed("验证码校验失败")
+    # if current_app.config.get("LOGIN_CAPTCHA"):
+    #     tag = request.headers.get("tag")
+    #     secret_key = current_app.config.get("SECRET_KEY")
+    #     serializer = JWSSerializer(secret_key)
+    #     if form.captcha.data != serializer.loads(tag):
+    #         raise Failed("验证码校验失败")
 
     user = manager.user_model.verify(form.username.data, form.password.data)
     # 用户未登录，此处不能用装饰器记录日志
